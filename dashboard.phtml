@@ -1,0 +1,31 @@
+<h2 class='text-center py-3'>Welcome, <span><?= $usernameSession['name']; ?> </span>!</h2>
+
+<div class="main">
+
+
+    <?php foreach ($posts as $key => $post) : ?>
+        <div class="container">
+            <div class="card">
+
+                <div class="card-title">
+                    <h3 class=""><?= $post['title']; ?></h3>
+                    <p>Added </span> on <span><small><?= $post['created_at']; ?></small></span></p>
+                </div>
+
+                <div class="card-body">
+                    <div class="buttons">
+                        <p class="lead "><?= $post['body']; ?></p>
+                        <a href="post.php?post=<?= $post['id']; ?>" class="btn-dark">More</a>
+                        <a href="edit.php?post=<?= $post['id']; ?>" class="btn-dark">Edit</a>
+
+                        <a href="dashboard.php?del=<?= intval($post['id']) ?>"  class="btn-danger" type="submit">Delete</a>
+                    </div>
+                    <img src="uploads/<?= $post['img']; ?>" alt="">
+                </div>
+
+
+            </div>
+        </div>
+        <hr>
+    <?php endforeach; ?>
+</div>

@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="container">
+
+        <form action="register.php" method="post" class="form">
+            <h1>Register Account</h1>
+            <div class="form-control">
+                <label for="name">Name : <sup>*</sup></label>
+                <input type="text" name="name" placeholder="Please enter your name..." required>
+                <span><?= $error; ?></span>
+                <span><?= $name_err; ?></span>
+            </div>
+            <div class="form-control">
+                <label for="email">Email : <sup>*</sup></label>
+                <input type="email" name="email" placeholder="Please enter your email..." required>
+                <span><?= $error; ?></span>
+                <span><?= $email_err; ?></span>
+                <span><?= $user_err; ?></span>
+            </div>
+            <div class="form-control">
+                <label for="password">Password : <sup>*</sup></label>
+                <input type="password" name="password" minlength="6" placeholder="Please enter your password..." required>
+                <span><?= $error; ?></span>
+                <span><?= $password_err; ?></span>
+
+            </div>
+            <div class="form-control">
+                <label for="confirm_password">Confirm Password : <sup>*</sup></label>
+                <input type="password" name="confirm_password" minlength="6" placeholder="Please confirm your password..." required>
+                <span><?= $error; ?></span>
+                <span><?= $password_err; ?></span>
+            </div>
+            <input class="btn" type="submit" name="register" value="Register">
+            <a href="login.php">Have already an account? Click <span class="">HERE</span> to login now!</a>
+        </form>
+
+    </div>
+</div>

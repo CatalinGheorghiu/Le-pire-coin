@@ -1,0 +1,25 @@
+<div class="container">
+    <form action="add.php" method="post" class="add-post" enctype="multipart/form-data">
+        <h1 class="text-center">Add your post here</h1>
+
+        <div class="form-control">
+            <label for="title">Title : </label>
+            <input type="text" name="title" placeholder="Please enter title">
+        </div>
+
+        <div class="form-control">
+            <label for="content">Content : </label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="form-control ">
+            <label for="file" class="custom-file-label">Chose File</label>
+            <input type="file" name="file" class="" id="file" accept="image/png, image/jpeg" multiple>
+        </div>
+
+
+
+        <input class="btn mb-2 py-2" type="submit" name="add-post" value="Add post">
+
+    </form>
+</div>

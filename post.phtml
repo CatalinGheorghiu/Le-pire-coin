@@ -1,0 +1,38 @@
+<div class="main">
+    <div class="announce">
+
+        <!-- Left side -->
+        <div class="main-container">
+            <!-- Card -->
+            <div class="msg-card">
+                <img src="uploads/<?= $posts['img']; ?>" alt="">
+                <hr>
+                <h1><?= $posts['title']; ?></h1>
+                <small><?= $posts['created_at']; ?></small>
+            </div>
+            <!-- Details -->
+            <div>
+                <p><?= $posts['body']; ?></p>
+            </div>
+            <!-- Location -->
+            <div></div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="right-side">
+            <!-- <div class="container"> -->
+            <form action="" class="msg-form">
+                <h2><?= $posts['name']; ?></h2>
+                <label for="title">Title</label>
+                <input type="text">
+
+                <label for="message">Message</label>
+                <textarea name="message" id="" cols="30" rows="10"></textarea>
+
+                <input type="submit" class="btn-dark" name="send-msg" value="Send" id="">
+            </form>
+            <!-- </div> -->
+        </div>
+
+    </div>
+</div>

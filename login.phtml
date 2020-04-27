@@ -1,0 +1,26 @@
+<?php if (isset($_GET['register'])) {
+    if ($_GET['register'] == 'success') {
+        echo  "<h2 class='success-alert '>Registration successfully! You can now login in to your account!</h2>";
+    }
+}; ?>
+<div class="main">
+    <div class="container">
+
+        <form action="login.php" method="post" class="form">
+            <h1>Login</h1>
+            <div class="form-control">
+                <label for="email">Email : </label>
+                <input type="email" name="email" onfocus="this.value=''" placeholder="Please enter your email" required>
+                <span><?= $user_err; ?></span>
+            </div>
+            <div class="form-control">
+                <label for="password">Password : </label>
+                <input type="password" minlength="6" name="password" required>
+                <span><?= $password_err; ?></span>
+            </div>
+            <input class="btn" type="submit" name="login" value="Login">
+            <a href="register.php">Don't have an account yet? Click <span class="">HERE</span> to register now!</a>
+        </form>
+
+    </div>
+</div>
