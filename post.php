@@ -2,10 +2,9 @@
 include "db.php";
 $dbh = new PDO($dsn, $user, $pass, $options);
 session_start();
-include "header.phtml";
 
 
-//Select Posts
+//Select Post
 $query = 'SELECT   
                                 Posts.id as postId, 
                                 Posts.user_id as postUserId, 
@@ -20,9 +19,8 @@ $query = 'SELECT
                                 WHERE Posts.id=:id';
 $sth = $dbh->prepare($query);
 $sth->execute([':id' =>  $_GET['post']]);
-$posts = $sth->fetch();
+$post = $sth->fetch();
 // }
 // var_dump($posts);
 
 include "post.phtml";
-include "footer.phtml";

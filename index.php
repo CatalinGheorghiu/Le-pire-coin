@@ -2,7 +2,7 @@
 include "db.php";
 $dbh = new PDO($dsn, $user, $pass, $options);
 session_start();
-include "header.phtml";
+
 
 
 //Select Posts
@@ -21,4 +21,3 @@ $posts = $stmt->fetchAll();
 // var_dump($posts);
 
 include "index.phtml";
-include "footer.phtml";

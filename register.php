@@ -1,24 +1,20 @@
 <?php
-include "header.phtml";
-
 include "db.php";
-$error = "";
-$name_err = "";
-$email_err = "";
-$user_err = "";
-$password_err = "";
 
 //Check if form is submitted
 if (!empty($_POST)) {
-    //Create PDO instance
+    $error = "";
+    $name_err = "";
+    $email_err = "";
+    $user_err = "";
+    $password_err = "";
 
+    //Create PDO instance
     $dbh = new PDO($dsn, $user, $pass, $options);
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password1 = $_POST['confirm_password'];
-
-
 
     //Password match
     if ($password !== $password1) {
@@ -36,20 +32,33 @@ if (!empty($_POST)) {
     }
 
     //Verify Empty fields
-    if (empty($name) || empty($email) || empty($password || empty($password1))) {
+    if (empty($name) || empty($email) || empty($password)) {
         $error = 'Please complete all fields!';
     }
 
 
-    //See if user EXISTS
-    $query = 'SELECT * FROM Users WHERE email =:email';
+    //See if email EXISTS
+    $query = 'SELECT COUNT(*) > 0 FROM Users WHERE email = :email';
     $stmt = $dbh->prepare($query);
-    $stmt->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+    $stmt->bindValue(':email',  trim($_POST['email']), PDO::PARAM_STR);
     $stmt->execute();
+    $emailCount = $stmt->fetchColumn();
+
+    //See if name EXISTS
+    $query = 'SELECT COUNT(*) > 0 FROM Users WHERE name = :name';
+    $stmt = $dbh->prepare($query);
+    $stmt->bindValue(':name',  trim($_POST['name']), PDO::PARAM_STR);
+    $stmt->execute();
+    $nameCount = $stmt->fetchColumn();
 
     //If user exists in DB...
-    if ($stmt->rowCount() > 0) {
+    if ($nameCount > 0 and $emailCount > 0) {
         $user_err = 'This email is already used!';
+        $name_err = 'This name is already used!';
+    } elseif ($emailCount > 0) {
+        $user_err = 'This email is already used!';
+    } elseif ($nameCount > 0) {
+        $name_err = 'This name is already used!';
     } else {
 
         //Add user
@@ -65,6 +74,4 @@ if (!empty($_POST)) {
         exit;
     }
 }
-
 include "register.phtml";
-include "footer.phtml";

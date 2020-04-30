@@ -1,3 +1,4 @@
+<?php include "header.phtml"; ?>
 <h2 class='text-center py-3'>Welcome, <span><?= $usernameSession['name']; ?> </span>!</h2>
 
 <div class="main">
@@ -8,19 +9,21 @@
             <div class="card">
 
                 <div class="card-title">
-                    <h3 class=""><?= $post['title']; ?></h3>
-                    <p>Added </span> on <span><small><?= $post['created_at']; ?></small></span></p>
+                    <h3 class=""><?= htmlspecialchars($post['title']); ?></h3>
+                    <p>Added </span> on <span><small><?= htmlspecialchars($post['created_at']); ?></small></span></p>
                 </div>
 
                 <div class="card-body">
                     <div class="buttons">
-                        <p class="lead "><?= $post['body']; ?></p>
-                        <a href="post.php?post=<?= $post['id']; ?>" class="btn-dark">More</a>
-                        <a href="edit.php?post=<?= $post['id']; ?>" class="btn-dark">Edit</a>
+                        <p class="lead "><?= htmlspecialchars($post['body']); ?></p>
+                        <a href="post.php?post=<?= htmlspecialchars($post['id']); ?>" class="btn-dark">More</a>
+                        <a href="edit.php?post=<?= htmlspecialchars($post['id']); ?>" class="btn-dark">Edit</a>
 
-                        <a href="dashboard.php?del=<?= intval($post['id']) ?>"  class="btn-danger" type="submit">Delete</a>
+                        <a href="dashboard.php?del=<?= htmlspecialchars(intval($post['id'])) ?>" class="btn-danger" type="submit">Delete</a>
                     </div>
-                    <img src="uploads/<?= $post['img']; ?>" alt="">
+
+                        <img src="uploads/<?= $value['img_url']; ?>" alt="">
+
                 </div>
 
 
@@ -29,3 +32,4 @@
         <hr>
     <?php endforeach; ?>
 </div>
+<?php include "footer.phtml"; ?>

@@ -1,6 +1,4 @@
 <?php
-include "header.phtml";
-
 include "db.php";
 
 $user_err = '';
@@ -39,4 +37,3 @@ if (!empty($_POST)) {
     }
 }
 include "login.phtml";
-include "footer.phtml";

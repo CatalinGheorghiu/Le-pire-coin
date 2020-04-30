@@ -1,3 +1,4 @@
+<?php include "header.phtml"; ?>
 <div class="main">
     <div class="container">
 
@@ -6,28 +7,51 @@
             <div class="form-control">
                 <label for="name">Name : <sup>*</sup></label>
                 <input type="text" name="name" placeholder="Please enter your name..." required>
-                <span><?= $error; ?></span>
-                <span><?= $name_err; ?></span>
+
+                <?php if (isset($error)) : ?>
+                    <span><?= $error; ?></span>
+                <?php endif; ?>
+                <?php if (isset($name_err)) : ?>
+                    <span><?= $name_err; ?></span>
+                <?php endif; ?>
+
             </div>
             <div class="form-control">
                 <label for="email">Email : <sup>*</sup></label>
                 <input type="email" name="email" placeholder="Please enter your email..." required>
-                <span><?= $error; ?></span>
-                <span><?= $email_err; ?></span>
-                <span><?= $user_err; ?></span>
+
+                <?php if (isset($error)) : ?>
+                    <span><?= $error; ?></span>
+                <?php endif; ?>
+                <?php if (isset($email_err)) : ?>
+                    <span><?= $email_err; ?></span>
+                <?php endif; ?>
+                <?php if (isset($user_err)) : ?>
+                    <span><?= $user_err; ?></span>
+                <?php endif; ?>
             </div>
             <div class="form-control">
                 <label for="password">Password : <sup>*</sup></label>
                 <input type="password" name="password" minlength="6" placeholder="Please enter your password..." required>
-                <span><?= $error; ?></span>
-                <span><?= $password_err; ?></span>
+
+
+                <?php if (isset($error)) : ?>
+                    <span><?= $error; ?></span>
+                <?php endif; ?>
+                <?php if (isset($password_err)) : ?>
+                    <span><?= $password_err; ?></span>
+                <?php endif; ?>
 
             </div>
             <div class="form-control">
                 <label for="confirm_password">Confirm Password : <sup>*</sup></label>
                 <input type="password" name="confirm_password" minlength="6" placeholder="Please confirm your password..." required>
-                <span><?= $error; ?></span>
-                <span><?= $password_err; ?></span>
+                <?php if (isset($error)) : ?>
+                    <span><?= $error; ?></span>
+                <?php endif; ?>
+                <?php if (isset($password_err)) : ?>
+                    <span><?= $password_err; ?></span>
+                <?php endif; ?>
             </div>
             <input class="btn" type="submit" name="register" value="Register">
             <a href="login.php">Have already an account? Click <span class="">HERE</span> to login now!</a>
@@ -35,3 +59,4 @@
 
     </div>
 </div>
+<?php include "footer.phtml"; ?>

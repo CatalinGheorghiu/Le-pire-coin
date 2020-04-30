@@ -1,0 +1,26 @@
+- Use trim(), not only for password
+- Don't use rowCount() for SELECT, 
+            use SQL count: SELECT COUNT (*)
+########################################
+--GENERAL
+-when displaying data, use htmlspecialchars();
+- use Database connection type from Damian
+###################################################
+--USE header.phtml AND footer.phtml INSIDE phtml FILES 
+(header.phtml->index.phtml->footer.phtml ####for example)
+###################################################
+index.php:
+- better include only index.phtml that takes header + footer
+- if there aren't any parameters , no need to execute() and prepare(), better $stmt->query();
+
+
+header.phtml:
+- 
+
+register.php
+- var err must be in the condition
+- use ifisset() for errors in HTML
+- 
+
+posts.php
+- var $posts should be $post. Only one post is displayed

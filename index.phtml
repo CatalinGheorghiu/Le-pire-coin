@@ -1,21 +1,22 @@
+<?php include "header.phtml"; ?>
 <h1 class="text-center mb-5 py-5">Here are the latest posts</h1>
 
 <div class="main">
-    <?php foreach ($posts as $key => $post) : ?>
+    <?php foreach ($posts as $post) : ?>
         <div class="container">
             <div class="card">
 
                 <div class="card-title">
-                    <h3 class=""><?= $post['title']; ?></h3>
-                    <p>Added </span> on <span><small><?= $post['created_at']; ?></small></span> by <?= $post['name']; ?></p>
+                    <h3 class=""><?=htmlspecialchars( $post['title']); ?></h3>
+                    <p>Added </span> on <span><small><?= htmlspecialchars($post['created_at']); ?></small></span> by <?= htmlspecialchars($post['name']); ?></p>
                 </div>
 
                 <div class="card-body">
                     <div class="buttons">
                         <!-- <a href="" class="btn-dark">Read More</a> -->
-                        <a href="post.php?post=<?= $post['postId']; ?>" class=" btn-dark">More</a>
+                        <a href="post.php?post=<?= htmlspecialchars($post['postId']); ?>" class=" btn-dark">More</a>
 
-                        <p class="lead "><?= $post['body']; ?></p>
+                        <p class="lead "><?= htmlspecialchars($post['body']); ?></p>
                     </div>
                     <img src="uploads/<?= $post['img']; ?>" alt="">
                 </div>
@@ -26,3 +27,5 @@
         <hr>
     <?php endforeach; ?>
 </div>
+
+<?php include "footer.phtml"; ?>

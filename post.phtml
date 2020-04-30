@@ -1,3 +1,4 @@
+<?php include "header.phtml"; ?>
 <div class="main">
     <div class="announce">
 
@@ -5,14 +6,14 @@
         <div class="main-container">
             <!-- Card -->
             <div class="msg-card">
-                <img src="uploads/<?= $posts['img']; ?>" alt="">
+                <img src="uploads/<?= $post['img']; ?>" alt="">
                 <hr>
-                <h1><?= $posts['title']; ?></h1>
-                <small><?= $posts['created_at']; ?></small>
+                <h1><?= htmlspecialchars($post['title']); ?></h1>
+                <small><?= htmlspecialchars($post['created_at']); ?></small>
             </div>
             <!-- Details -->
             <div>
-                <p><?= $posts['body']; ?></p>
+                <p><?= htmlspecialchars($post['body']); ?></p>
             </div>
             <!-- Location -->
             <div></div>
@@ -22,7 +23,7 @@
         <div class="right-side">
             <!-- <div class="container"> -->
             <form action="" class="msg-form">
-                <h2><?= $posts['name']; ?></h2>
+                <h2><?= htmlspecialchars($post['name']); ?></h2>
                 <label for="title">Title</label>
                 <input type="text">
 
@@ -36,3 +37,4 @@
 
     </div>
 </div>
+<?php include "footer.phtml"; ?>
