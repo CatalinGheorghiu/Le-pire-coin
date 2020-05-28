@@ -42,7 +42,16 @@ $images = $stmt->fetchAll();
 
 
 
-$query = 'SELECT * FROM Images WHERE post_id IN (SELECT id FROM Posts WHERE user_id = :id)';
+$query = '  SELECT 
+                img_url
+            FROM 
+                Images 
+            WHERE 
+                post_id 
+            IN 
+                (SELECT id FROM Posts WHERE user_id = :id)
+            LIMIT
+                1';
 $stmt = $dbh->prepare($query);
 $stmt->bindValue(':id', trim($_SESSION['logged']), PDO::PARAM_INT);
 $stmt->execute();

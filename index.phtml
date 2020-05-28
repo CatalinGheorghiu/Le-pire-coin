@@ -1,31 +1,31 @@
 <?php include "header.phtml"; ?>
-<h1 class="text-center mb-5 py-5">Here are the latest posts</h1>
 
-<div class="main">
-    <?php foreach ($posts as $post) : ?>
-        <div class="container">
-            <div class="card">
 
-                <div class="card-title">
-                    <h3 class=""><?=htmlspecialchars( $post['title']); ?></h3>
-                    <p>Added </span> on <span><small><?= htmlspecialchars($post['created_at']); ?></small></span> by <?= htmlspecialchars($post['name']); ?></p>
-                </div>
+<section class="text-gray-500 bg-gray-900 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="-my-8">
 
-                <div class="card-body">
-                    <div class="buttons">
-                        <!-- <a href="" class="btn-dark">Read More</a> -->
-                        <a href="post.php?post=<?= htmlspecialchars($post['postId']); ?>" class=" btn-dark">More</a>
-
-                        <p class="lead "><?= htmlspecialchars($post['body']); ?></p>
+            <?php foreach ($posts as $key => $post) : ?>
+                <div class="py-8 flex border-t-2 border-gray-800 flex-wrap md:flex-no-wrap">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                        <span class="tracking-widest font-medium title-font text-white">CATEGORY</span>
+                        <span class="mt-1 text-gray-600 text-sm"><?= $post['postCreated'] ?></span>
                     </div>
-                    <img src="uploads/<?= $post['img']; ?>" alt="">
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-white title-font mb-2"><?= $post['title'] ?></h2>
+                        <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
+                        <a class="text-green-500 inline-flex items-center mt-4">Learn More
+                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+            <?php endforeach; ?>
 
-
-            </div>
         </div>
-        <hr>
-    <?php endforeach; ?>
-</div>
+    </div>
+</section>
 
 <?php include "footer.phtml"; ?>

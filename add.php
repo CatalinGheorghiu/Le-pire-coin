@@ -1,8 +1,5 @@
 <?php
-include "db.php";
-$dbh = new PDO($dsn, $user, $pass, $options);
 session_start();
-
 if (!array_key_exists('logged', $_SESSION)) {
     //	Redirect to home page
     header('Location: ./');
@@ -10,18 +7,22 @@ if (!array_key_exists('logged', $_SESSION)) {
 }
 
 if (!empty($_POST)) {
-    $query = 'INSERT INTO Posts (user_id, title, body) VALUES (:user_id, :title, :body)';
+    include "db.php";
+    $dbh = new PDO($dsn, $user, $pass, $options);
+
+
+
+
+
+
+    $query = '  INSERT INTO 
+                    Posts(user_id, title, body) 
+                VALUES 
+                    (:user_id, :title, :body)';
     $stmt = $dbh->prepare($query);
-    $stmt->bindValue(':user_id', $_SESSION['logged'], PDO::PARAM_STR);
+    $stmt->bindValue(':user_id', $_SESSION['logged'], PDO::PARAM_INT);
     $stmt->bindValue(':title', trim($_POST['title']), PDO::PARAM_STR);
     $stmt->bindValue(':body', trim($_POST['content']), PDO::PARAM_STR);
-    // if (!empty($urlImg)) {
-
-    //     $stmt->bindValue(':img', $urlImg, PDO::PARAM_STR);
-    // } else {
-    //     $urlImg = "unnamed.jpg";
-    //     $stmt->bindValue(':img', $urlImg, PDO::PARAM_STR);
-    // }
     $stmt->execute();
     $postId = $dbh->lastInsertId();
 
@@ -38,7 +39,7 @@ if (!empty($_POST)) {
 
         if ($fileError  == 0) {
             if (in_array(mime_content_type($fileTmpName), ['image/png', 'image/jpeg'])) {
-                if ($fileSize <= 3000000000) {
+                if ($fileSize <= 3000000) {
 
                     $urlImg = uniqid() . '.' . pathinfo($fileName, PATHINFO_EXTENSION);
                     var_dump($urlImg);
