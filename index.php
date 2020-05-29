@@ -18,6 +18,6 @@ $query = 'SELECT *,
 $stmt = $dbh->prepare($query);
 $stmt->execute();
 $posts = $stmt->fetchAll();
-var_dump($posts);
+// var_dump($posts);
 
 include "index.phtml";

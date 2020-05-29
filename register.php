@@ -1,6 +1,6 @@
 <?php
 include "db.php";
-
+$name = $email = $password = $password1 = "";
 //Check if form is submitted
 if (!empty($_POST)) {
     $error = "";

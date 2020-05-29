@@ -1,15 +1,18 @@
 <?php
 include "db.php";
+$email = $password = '';
 
-$user_err = '';
-$password_err = '';
 
 if (!empty($_POST)) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user_err = '';
+    $password_err = '';
     //Create PDO instance
 
     $dbh = new PDO($dsn, $user, $pass, $options);
 
-    //Add user
+    //Select user
     $query = 'SELECT id, password FROM Users WHERE email = :email';
     $stmt = $dbh->prepare($query);
     $stmt->bindValue(':email', trim($_POST['email'], PDO::PARAM_STR));

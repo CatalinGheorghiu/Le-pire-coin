@@ -1,0 +1,23 @@
+{
+    "name": "Le_pire_coin",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build:css": "tailwind build src/css/style.css -o dist/css/style.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CatalinGheorghiu/Le-pire-coin.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/CatalinGheorghiu/Le-pire-coin/issues"
+    },
+    "homepage": "https://github.com/CatalinGheorghiu/Le-pire-coin#readme",
+    "dependencies": {
+        "tailwindcss": "^1.4.6"
+    }
+}
