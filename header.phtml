@@ -47,6 +47,16 @@
 
                 <?php else : ?>
                     <li class="md:ml-4">
+                        <p class=" block no-underline  py-2 text-green-600 md:border-none md:p-0">
+                            <?= $_SESSION['user_name']; ?> |
+                        </p>
+                    </li>
+                    <li class="md:ml-4">
+                        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="add.php">
+                            Add Post
+                        </a>
+                    </li>
+                    <li class="md:ml-4">
                         <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="dashboard.php">
                             Dashboard
                         </a>

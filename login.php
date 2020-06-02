@@ -13,7 +13,7 @@ if (!empty($_POST)) {
     $dbh = new PDO($dsn, $user, $pass, $options);
 
     //Select user
-    $query = 'SELECT id, password FROM Users WHERE email = :email';
+    $query = 'SELECT id, password,name FROM Users WHERE email = :email';
     $stmt = $dbh->prepare($query);
     $stmt->bindValue(':email', trim($_POST['email'], PDO::PARAM_STR));
     $stmt->execute();
@@ -24,6 +24,7 @@ if (!empty($_POST)) {
         //Start session
         session_start();
         $_SESSION['logged'] = intval($user['id']);
+        $_SESSION['user_name'] = $user['name'];
 
         //Redirect to dashboard
         header('Location: dashboard.php');
