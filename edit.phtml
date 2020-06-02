@@ -1,30 +1,24 @@
 <?php include "header.phtml"; ?>
-<div class="main">
-    <div class="container">
-        <form action="edit.php?post=<?= htmlspecialchars($post['postId']); ?>" method="post" class="add-post" enctype="multipart/form-data">
-            <h1 class="text-center">Edit your post here</h1>
-
-            <div class="form-control">
-                <label for="title">Title : </label>
-                <input type="text" name="title" value="<?=htmlspecialchars( $post['title']); ?>">
-            </div>
-
-            <div class="form-control">
-                <label for="content">Content : </label>
-                <textarea name="content" id="" cols="30" rows="10"><?= htmlspecialchars($post['body']); ?></textarea>
-            </div>
-
-            <div class="form-control ">
-                <label for="file" class="custom-file-label">Chose File</label>
-                <input type="file" name="file" class="" id="file" accept="image/png, image/jpeg" multiple value="<?= $post['img']; ?>">
-                <img src="uploads/<?= $post['img']; ?>" alt="No img" class="thumbnail">
-            </div>
 
 
+<div id="content" class='flex flex-col flex-auto bg-grey-lighter'>
+    <div id="problem-here" class="flex-grow container mx-auto p-4 ">
+        <div class="text-gray-700 body-font relative">
+            <form action="edit.php?post=<?= htmlspecialchars($post['postId']); ?>" method="post" enctype="multipart/form-data">
+                <div class="container px-5 py-24 mx-auto flex">
+                    <div class=" flex flex-col mx-auto relative z-10 w-full lg:w-8/12">
+                        <h2 class="text-gray-900  text-center my-10 text-4xl title-font">Edit post</h2>
 
-            <input class="btn mb-2 py-2" type="submit" name="add-post" value="Edit post">
+                        <input name="title" type="text" class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" value="<?= htmlspecialchars($post['title']); ?>">
+                        <textarea name="content" class="bg-white rounded border border-gray-400 focus:outline-none h-64  focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none"><?= htmlspecialchars($post['body']); ?></textarea>
 
-        </form>
+                        <!-- <input type="file" name="file[]" class=" py-2 mb-4" id="file" accept="image/png, image/jpeg" multiple> -->
+                        <input type="submit" name="edit-post" value="Edit post" class="text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">
+                    </div>
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>
 <?php include "footer.phtml"; ?>
